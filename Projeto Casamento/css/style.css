@@ -1,0 +1,132 @@
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+    
+}
+html{
+    background-image: url(/media/dd53b184eaf2bfa16ce567e73ef2252a.png);
+}
+.container{
+    width: 60vw;
+    height: 100%;
+    
+    /*display: flex;
+    flex-direction: column;
+    align-items: flex-start;*/
+    gap: 4px;
+    
+    background-color: rgba(252, 252, 252, 0.795);
+}
+.titulo{
+width: auto;
+font-family:Brush Script MT, Brush Script Std, cursive ;
+font-size: 3rem;
+margin-left: 50px;
+align-self: flex-start;
+color: rgb(144, 209, 212);
+}
+.subtitulo{
+    font-family: Palatino, URW Palladio L, serif;
+    font-style: bold;
+    font-size: 2rem;
+    gap: 10px;
+    margin-left: 50px;
+}
+.PdaLista{
+    color: gold;
+}
+.containerDaLista{
+width: 100%;
+height: 100%;
+display: grid;
+grid-template-columns: repeat(2,2fr);
+grid-template-rows: repeat(3,auto);
+/*background-color: tomato;*/
+gap: 10px;
+}
+.item{
+    font-family: 'Noto Sans', sans-serif;
+    margin-top: 10px;
+    gap: 10px;
+   background-color: white;
+    width: 100%;
+    height: 100%;
+}
+.Tituconteudo{
+    background-color:rgb(67,67,67) ;
+    color: white;
+}
+#cozinha{
+    height: auto;
+}
+#quarto
+{
+    height: auto;
+}
+#banheiro{
+    height: auto;
+}
+#areaServico{
+    height: auto;
+}
+ul{
+    width: 100%;
+    transform: translateX(-20px);
+}
+li{
+    list-style: none;
+    background-color: rgb(238, 238, 238);
+    margin-bottom: 4px;
+    margin-left: 8px;
+    text-align: left;
+    width: auto;
+    height: auto;
+}
+
+.inputs{
+    border: none;
+    border-bottom: 3px;
+    align-self: flex-end;
+    width: 200px;
+    height: 25px;
+    line-height: 25px;
+    list-style: upper-latin;
+}
+#lista-cozinha{
+    display: grid;
+    grid-gap:4px;
+    grid-template-columns: repeat(2,1fr);
+}
+#lista-quarto{
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(2,1fr);
+}
+#lista-banheiro{
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(2,1fr);
+}
+#lista-areaDeServico{
+    display: grid;
+    grid-gap: 4px;
+    grid-template-columns: repeat(2,1fr);
+}
+.submitBtn{
+    background-color: rgba(95, 93, 93, 0.76);
+    width: 200px;
+    height: 20px;
+    border: none;
+    border-radius: 2px;
+    padding-bottom: -3px;
+    color: rgb(255, 255, 255);
+    
+}
+.submitBtn:active{
+    width: 180px;
+    height: 18px;
+}
+.div1{
+    display: flex;
+    flex-direction: column;
+}
