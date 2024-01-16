@@ -1,5 +1,3 @@
-
-
 var listaItens = [
     {
         categoria: "cozinha",
@@ -29,6 +27,7 @@ var listaItens = [
         categoria: "areaDeServico",
         itens: [
             "Vassoura", "Rodo", "Pá de lixo", "Panos de chão", "Pregadores de roupa", "Baldes","Tábua de passar roupa",
+            "Varal de chão"
             
         ]
     }
@@ -39,50 +38,64 @@ function adicionarItensNaLista(categoria, itens) {
     itens.forEach(function (item) {
         var li = document.createElement('li');
         var textInput = document.createElement('input');
+        var paragraph = document.createElement('p');
         var btn = document.createElement('button');
-        //var resetBtn = document.createElement('button');
-        //resetBtn.classList.add('submitBtn')
+
         btn.classList.add('submitBtn');
         btn.innerText = 'Salvar';
         btn.type = 'submit';
+
         textInput.type = 'text';
         textInput.classList.add('inputs');
         textInput.placeholder = 'Digite aqui o seu nome';
+
+        paragraph.classList.add('nomeParagrafo');
+        paragraph.style.display = 'none';
 
         li.classList.add('liList');
         li.textContent = item + ': ';
         li.appendChild(textInput);
         li.appendChild(btn);
+        li.appendChild(paragraph);
         lista.appendChild(li);
-        //lista.appendChild(resetBtn);
-        /*resetBtn.addEventListener('click',function resetarDadosLocais() {
+
+        /*var resetBtn = document.createElement('button');
+        resetBtn.classList.add('resetBtn');
+        resetBtn.innerText = 'Resetar Dados Locais';
+        lista.appendChild(resetBtn);
+        resetBtn.addEventListener('click', function resetarDadosLocais() {
             localStorage.removeItem('dados');
             console.log('Dados locais resetados.');
-        })*/
+            // Limpa o parágrafo e exibe novamente o input
+            paragraph.innerText = '';
+            paragraph.style.display = 'none';
+            textInput.style.display = 'block';
+        });
+        */
         btn.addEventListener('click', function salveNome(evt) {
             const inputValue = textInput.value;
-            const regex = /^(?!.*(?:DROP|TABLE|DELETE|SELECT|FROM|AUTOINCREMENT|WHERE))[a-zA-Z]{3,}$/;
+            const regex = /^(?!.*(?:DROP|TABLE|DELETE|SELECT|FROM|AUTOINCREMENT|WHERE))[a-zA-Z ]{3,}$/;
             const testaRegex = regex.test(inputValue);
-            if (inputValue.trim() !== ''&& testaRegex) {
+
+            if (inputValue.trim() !== '' && testaRegex) {
                 const nomeItem = {
                     nome: inputValue,
                     item: item
                 };
 
-                // Recupera os dados já existentes no localStorage
                 const dadosAntigos = JSON.parse(localStorage.getItem('dados') || '[]');
-
-                // Adiciona os novos dados ao array existente
                 dadosAntigos.push(nomeItem);
-                
-                // Salva o array atualizado no localStorage
                 localStorage.setItem('dados', JSON.stringify(dadosAntigos));
 
                 console.log('Dados salvos localmente:', nomeItem);
+
+                // Exibe o nome do localStorage no parágrafo e oculta o input
+                paragraph.innerText = nomeItem.nome;
+                paragraph.style.display = 'block';
+                textInput.style.display = 'none';
+                btn.style.display= 'none';
             } else {
-                inputValue.innerText = '';
-                console.log('Campo vazio');
-                alert('Você precisa escolher um item, inserir seu nome e salvar. Numeros e caracteres especiais não são aceitos');
+                alert('Você precisa escolher um item, inserir seu nome e salvar. Números e caracteres especiais não são aceitos');
             }
         });
     });
@@ -93,7 +106,8 @@ listaItens.forEach(function (categoriaItens) {
     adicionarItensNaLista(categoriaItens.categoria, categoriaItens.itens);
 });
 
-// Recupera os dados salvos localmente e faz algo com eles (por exemplo, exibe no console)
+// Recupera os dados salvos localmente e exibe no console
 const dadosSalvos = JSON.parse(localStorage.getItem('dados') || '[]');
 console.log('Dados salvos localmente:', dadosSalvos);
+
 
